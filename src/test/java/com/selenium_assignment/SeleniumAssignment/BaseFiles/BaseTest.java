@@ -46,8 +46,14 @@ public class BaseTest {
 		}
 
 		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofMillis(10000));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
 		driver.get(AUT);
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		basePage = new BasePage();
 		basePage.setDriver(driver);
 		homePage = new HomePage();
