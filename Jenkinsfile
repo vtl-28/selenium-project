@@ -54,46 +54,20 @@ pipeline {
                 echo "Test Suite: ${TEST_SUITE}"
                 echo "Browser: ${BROWSER}"
                 
-                // Run TestNG tests via Maven
-                bat "mvn clean test -DsuiteXmlFile=testng.xml"
+                
+                 script {
+                    def testngFile = 'testng.xml' // change if in a subfolder
+                    if (fileExists(testngFile)) {
+                        bat "mvn clean test -DsuiteXmlFile=${testngFile}"
+                    } else {
+                        error "TestNG suite file '${testngFile}' not found!"
+                    }
+                }
+                
             }
             post {
                 always {
                     echo "Processing test results..."
-                    
-                    // Publish TestNG results
-                    publishTestResults testResultsPattern: 'target/surefire-reports/*.xml'
-                    
-                    // Archive TestNG HTML reports
-                    archiveArtifacts artifacts: 'test-output/**/*', allowEmptyArchive: true, fingerprint: true
-                    
-                    // Archive ExtentReports if they exist
-                    archiveArtifacts artifacts: 'target/extent-reports/**/*', allowEmptyArchive: true, fingerprint: true
-                    
-                    // Archive screenshots captured on test failures
-                    archiveArtifacts artifacts: 'screenshots/**/*', allowEmptyArchive: true, fingerprint: true
-                    
-                    // Publish HTML test reports
-                    publishHTML([
-                        allowMissing: true,
-                        alwaysLinkToLastBuild: true,
-                        keepAll: true,
-                        reportDir: 'target/extent-reports',
-                        reportFiles: '*.html',
-                        reportName: 'Selenium Test Report (ExtentReports)',
-                        reportTitles: 'Amazon India Automation Test Results'
-                    ])
-                    
-                    // Also publish TestNG HTML report
-                    publishHTML([
-                        allowMissing: true,
-                        alwaysLinkToLastBuild: true,
-                        keepAll: true,
-                        reportDir: 'test-output',
-                        reportFiles: 'index.html',
-                        reportName: 'TestNG Report',
-                        reportTitles: 'TestNG Execution Results'
-                    ])
                 }
                 success {
                     echo "All tests passed successfully!"
@@ -107,23 +81,6 @@ pipeline {
             }
         }
         
-        stage('Package') {
-            when {
-                // Only package if tests pass
-                expression { currentBuild.currentResult == 'SUCCESS' }
-            }
-            steps {
-                echo "Packaging the test automation suite..."
-                
-                // Create JAR file without running tests again
-                bat 'mvn package -DskipTests'
-                
-                // Archive the built artifacts
-                archiveArtifacts artifacts: 'target/*.jar', allowEmptyArchive: true, fingerprint: true
-                
-                echo "Packaging completed!"
-            }
-        }
         
         stage('Cleanup') {
             steps {
@@ -180,42 +137,12 @@ pipeline {
             echo "Pipeline executed successfully!"
             echo "All stages completed without errors."
             
-            // You can add success notifications here
-            // Example: Send email notification
-            // emailext (
-            //     subject: "✅ SUCCESS: Amazon Selenium Tests - Build #${env.BUILD_NUMBER}",
-            //     body: """
-            //         <h2>🎉 Build Successful!</h2>
-            //         <p><strong>Project:</strong> ${env.JOB_NAME}</p>
-            //         <p><strong>Build:</strong> #${env.BUILD_NUMBER}</p>
-            //         <p><strong>Duration:</strong> ${currentBuild.durationString}</p>
-            //         <p><strong>Status:</strong> All Selenium tests passed!</p>
-            //         <p><a href="${env.BUILD_URL}">View Build Details</a></p>
-            //     """,
-            //     to: "your-email@example.com",
-            //     mimeType: 'text/html'
-            // )
+      
         }
         
         failure {
             echo "Pipeline failed! Please check the logs."
             echo "Check the console output and test reports for details."
-            
-            // You can add failure notifications here
-            // emailext (
-            //     subject: "❌ FAILURE: Amazon Selenium Tests - Build #${env.BUILD_NUMBER}",
-            //     body: """
-            //         <h2>❌ Build Failed!</h2>
-            //         <p><strong>Project:</strong> ${env.JOB_NAME}</p>
-            //         <p><strong>Build:</strong> #${env.BUILD_NUMBER}</p>
-            //         <p><strong>Duration:</strong> ${currentBuild.durationString}</p>
-            //         <p><strong>Status:</strong> Pipeline failed - please investigate</p>
-            //         <p><a href="${env.BUILD_URL}console">View Console Log</a></p>
-            //         <p><a href="${env.BUILD_URL}testReport">View Test Report</a></p>
-            //     """,
-            //     to: "your-email@example.com",
-            //     mimeType: 'text/html'
-            // )
         }
         
         unstable {

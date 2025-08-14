@@ -10,6 +10,7 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 
 import com.selenium_assignment.SeleniumAssignment.Base.BasePage;
@@ -26,7 +27,7 @@ public class BaseTest {
 
 	@BeforeClass
 	@Parameters({ "browser", "AUT" })
-	public void setUp(String nameOfBrowser, String AUT) {
+	public void setUp(@Optional("edge") String nameOfBrowser, @Optional("https://www.amazon.in") String AUT) {
 		logger.info("Starting test from the base file");
 		// ChromeOptions options = new ChromeOptions();
 		// options.addArguments("--headless");

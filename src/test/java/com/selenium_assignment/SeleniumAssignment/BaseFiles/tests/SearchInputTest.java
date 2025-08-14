@@ -3,6 +3,7 @@ package com.selenium_assignment.SeleniumAssignment.BaseFiles.tests;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
+import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -14,7 +15,7 @@ public class SearchInputTest extends BaseTest {
 
 	@Test
 	@Parameters("expectedProductFound")
-	public void testVerifySearchFunctionality(String expectedProductFound) {
+	public void testVerifySearchFunctionality(@Optional("Lenovo") String expectedProductFound) {
 		SearchInputBox searchPage = homePage.goToSearchInput();
 		logger.info("Search input box retrieved");
 

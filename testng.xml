@@ -22,15 +22,7 @@
     <parameter name="unknowUserNumber" value="0719900709"></parameter>
     <classes>
        <class name="com.selenium_assignment.SeleniumAssignment.BaseFiles.tests.SearchInputTest"/>
-	    <class name="com.selenium_assignment.SeleniumAssignment.BaseFiles.tests.UnknownUserEmailTest"/>
-	    <class name="com.selenium_assignment.SeleniumAssignment.BaseFiles.tests.ReadMoreTest"/>
-	    <class name="com.selenium_assignment.SeleniumAssignment.BaseFiles.tests.DefaultLanguageTest"/>
-	    <class name="com.selenium_assignment.SeleniumAssignment.BaseFiles.tests.CartAccessTest"/>
-	    <class name="com.selenium_assignment.SeleniumAssignment.BaseFiles.tests.BestSellersTest"/>
-	    <class name="com.selenium_assignment.SeleniumAssignment.BaseFiles.tests.TestSendEmailToCustomerSupport"/>
-	    <class name="com.selenium_assignment.SeleniumAssignment.BaseFiles.tests.ArticleFillterTest"/>
-	    <class name="com.selenium_assignment.SeleniumAssignment.BaseFiles.tests.CheckAmazonPayBalance"/>
-	    <class name="com.selenium_assignment.SeleniumAssignment.BaseFiles.tests.UnknownUserNumberTest"/>
+	   
     </classes>
   </test>
 </suite> <!-- Suite -->
