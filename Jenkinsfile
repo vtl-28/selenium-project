@@ -25,13 +25,7 @@ pipeline {
                 echo "Checking out repository from GitHub..."
                 checkout scm
                 
-                // Display repository information
-                script {
-                    def gitCommit = bat(script: 'git rev-parse --short HEAD', returnStdout: true).trim()
-                    def gitBranch = bat(script: 'git rev-parse --abbrev-ref HEAD', returnStdout: true).trim()
-                    echo "Branch: ${gitBranch}"
-                    echo "Commit: ${gitCommit}"
-                }
+                
             }
         }
         
