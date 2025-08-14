@@ -89,35 +89,6 @@ pipeline {
                 // Clean Maven build artifacts
                 bat 'mvn clean'
                 
-                // Remove temporary files and directories that may have been created during test execution
-                script {
-                    // Clean up screenshots directory
-                    if (fileExists('screenshots')) {
-                        bat 'if exist screenshots rmdir /s /q screenshots'
-                        echo "Removed screenshots directory"
-                    }
-                    
-                    // Clean up logs directory  
-                    if (fileExists('logs')) {
-                        bat 'if exist logs rmdir /s /q logs'
-                        echo "Removed logs directory"
-                    }
-                    
-                    // Clean up test-output directory
-                    if (fileExists('test-output')) {
-                        bat 'if exist test-output rmdir /s /q test-output'
-                        echo "Removed test-output directory"
-                    }
-                    
-                    // Clean up any WebDriver temporary files
-                    if (fileExists('chromedriver.log')) {
-                        bat 'if exist chromedriver.log del chromedriver.log'
-                    }
-                    if (fileExists('geckodriver.log')) {
-                        bat 'if exist geckodriver.log del geckodriver.log'
-                    }
-                }
-                
                 echo "Cleanup completed successfully!"
             }
         }
