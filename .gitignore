@@ -1,0 +1,12 @@
+# IDE-specific folders
+.idea/
+.classpath
+.project
+.settings/
+*.iml
+
+# JRE system lib and Maven dependency folders (managed by IDE)
+JRE System Library/
+Maven Dependencies/
+test-output/*
+/target/
