@@ -3,6 +3,7 @@ package com.selenium_assignment.SeleniumAssignment.BaseFiles.tests;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
+import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -14,7 +15,8 @@ public class ReadMoreTest extends BaseTest {
 
 	@Test
 	@Parameters("expectedStoryHeadlineText")
-	public void testCheckReadMoreFunctionality(String expectedStoryHeadlineText) {
+	public void testCheckReadMoreFunctionality(@Optional("53% surveyed experience sleep-related disorders without a consistent bedtime routine: YouGov and Amazon Alexa Study") 
+		String expectedStoryHeadlineText) {
 		PressReleasePage pressRelease = homePage.goToPressReleasePage();
 		logger.info("Press release page retrieved");
 

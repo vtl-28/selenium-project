@@ -6,10 +6,9 @@
      <listener class-name ="com.selenium_asssignment.extentListeners.ExtentListeners"/>
   </listeners>
    
-  
-  
-  <test thread-count="5" name="Testing on Edge">
-  	<parameter name="browser" value="edge"></parameter>
+
+  <test name="Testing on Chrome">
+  	<parameter name="browser" value="chrome"></parameter>
   	<parameter name="AUT" value="https://www.amazon.in"></parameter>
   	<parameter name="expectedArticleYear" value="14 December 2022"></parameter>
   	<parameter name="expectedHeaderText" value="Amazon Bestsellers"></parameter>
@@ -21,8 +20,17 @@
     <parameter name="unknowUserEmail" value="vuisile@nagarro.com"></parameter>
     <parameter name="unknowUserNumber" value="0719900709"></parameter>
     <classes>
-       <class name="com.selenium_assignment.SeleniumAssignment.BaseFiles.tests.SearchInputTest"/>
-	   
+	    <class name="com.selenium_assignment.SeleniumAssignment.BaseFiles.tests.SearchInputTest"/>
+	    <class name="com.selenium_assignment.SeleniumAssignment.BaseFiles.tests.UnknownUserEmailTest"/>
+	    <class name="com.selenium_assignment.SeleniumAssignment.BaseFiles.tests.ReadMoreTest"/>
+	    <class name="com.selenium_assignment.SeleniumAssignment.BaseFiles.tests.DefaultLanguageTest"/>
+	    <class name="com.selenium_assignment.SeleniumAssignment.BaseFiles.tests.CartAccessTest"/>
+	    <class name="com.selenium_assignment.SeleniumAssignment.BaseFiles.tests.BestSellersTest"/>
+	    <class name="com.selenium_assignment.SeleniumAssignment.BaseFiles.tests.TestSendEmailToCustomerSupport"/>
+	    <class name="com.selenium_assignment.SeleniumAssignment.BaseFiles.tests.ArticleFillterTest"/>
+	    <class name="com.selenium_assignment.SeleniumAssignment.BaseFiles.tests.CheckAmazonPayBalance"/>
+	    <class name="com.selenium_assignment.SeleniumAssignment.BaseFiles.tests.UnknownUserNumberTest"/>
     </classes>
   </test>
+ 
 </suite> <!-- Suite -->

@@ -3,6 +3,7 @@ package com.selenium_assignment.SeleniumAssignment.BaseFiles.tests;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
+import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -15,7 +16,7 @@ public class CartAccessTest extends BaseTest {
 
 	@Test
 	@Parameters({"expectedSignInText", "expectedSignUpText"})
-	public void testCartAccess(String expectedSignInText, String expectedSignUpText) {
+	public void testCartAccess(@Optional("Sign in to your account") String expectedSignInText, @Optional("Sign up now") String expectedSignUpText) {
 		CartPage cart = homePage.goToCart();
 		logger.info("Cart page retrieved");
 

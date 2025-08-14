@@ -3,6 +3,7 @@ package com.selenium_assignment.SeleniumAssignment.BaseFiles.tests;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
+import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -14,7 +15,7 @@ public class UnknownUserEmailTest extends BaseTest {
 
 	@Test
 	@Parameters("unknowUserEmail")
-	public void testUnknownUserEmail(String unknowUserEmail) {
+	public void testUnknownUserEmail(@Optional("vuisile@nagarro.com") String unknowUserEmail) {
 		SignInPage signInPage = homePage.goToSignIn();
 		logger.info("Sign In page retrieved");
 

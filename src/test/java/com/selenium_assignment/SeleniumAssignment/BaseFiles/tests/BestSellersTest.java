@@ -3,6 +3,7 @@ package com.selenium_assignment.SeleniumAssignment.BaseFiles.tests;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
+import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -14,7 +15,7 @@ public class BestSellersTest extends BaseTest {
 
 	@Test
 	@Parameters("expectedHeaderText")
-	public void testBestSellersNavigation(String expectedHeaderText) {
+	public void testBestSellersNavigation(@Optional("Amazon Bestsellers") String expectedHeaderText) {
 		BestSellersPage bestSellersPage = homePage.goToBestSellers();
 		logger.info("Best sellers page retrieved");
 

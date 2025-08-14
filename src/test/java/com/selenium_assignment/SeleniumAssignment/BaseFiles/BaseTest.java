@@ -27,7 +27,7 @@ public class BaseTest {
 
 	@BeforeClass
 	@Parameters({ "browser", "AUT" })
-	public void setUp(@Optional("edge") String nameOfBrowser, @Optional("https://www.amazon.in") String AUT) {
+	public void setUp(@Optional("chrome") String nameOfBrowser, @Optional("https://www.amazon.in") String AUT) {
 		logger.info("Starting test from the base file");
 		// ChromeOptions options = new ChromeOptions();
 		// options.addArguments("--headless");

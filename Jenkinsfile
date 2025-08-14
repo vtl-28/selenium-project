@@ -10,7 +10,7 @@ pipeline {
     environment {
         // Environment variables for the pipeline
         MAVEN_OPTS = '-Dmaven.test.failure.ignore=false'  // Pipeline fails if tests fail
-        BROWSER = 'edge'  // Default browser for Selenium tests
+        BROWSER = 'chrome'  // Default browser for Selenium tests
         TEST_SUITE = 'testng.xml'  // TestNG suite file
     }
     

@@ -3,6 +3,7 @@ package com.selenium_assignment.SeleniumAssignment.BaseFiles.tests;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
+import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -14,7 +15,7 @@ public class DefaultLanguageTest extends BaseTest {
 
 	@Test
 	@Parameters("expectedDefaultLanguage")
-	public void testVerifyDefaultLanguage(String expectedDefaultLanguage) {
+	public void testVerifyDefaultLanguage(@Optional("English - EN") String expectedDefaultLanguage) {
 		DefaultLanguagePage defaultLanguage = homePage.goToDefaultLanguage();
 		logger.info("Language page retrieved");
 

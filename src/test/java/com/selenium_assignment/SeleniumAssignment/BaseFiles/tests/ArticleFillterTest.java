@@ -3,6 +3,7 @@ package com.selenium_assignment.SeleniumAssignment.BaseFiles.tests;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
+import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -14,7 +15,7 @@ public class ArticleFillterTest extends BaseTest {
 
 	@Test
 	@Parameters("expectedArticleYear")
-	public void testFilterArticlesByYear(String expectedArticleYear) {
+	public void testFilterArticlesByYear(@Optional("14 December 2022") String expectedArticleYear) {
 		PressReleasePage releasePage = homePage.goToPressReleasePage();
 		logger.info("Press release page retrieved");
 
