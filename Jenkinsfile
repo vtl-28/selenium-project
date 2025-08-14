@@ -10,7 +10,7 @@ pipeline {
     environment {
         // Environment variables for the pipeline
         MAVEN_OPTS = '-Dmaven.test.failure.ignore=false'  // Pipeline fails if tests fail
-        BROWSER = 'chrome'  // Default browser for Selenium tests
+        BROWSER = 'edge'  // Default browser for Selenium tests
         TEST_SUITE = 'testng.xml'  // TestNG suite file
     }
     
@@ -55,7 +55,7 @@ pipeline {
                 echo "Browser: ${BROWSER}"
                 
                 // Run TestNG tests via Maven
-                bat "mvn clean test -DsuiteXmlFile=${TEST_SUITE}"
+                bat "mvn clean test -DsuiteXmlFile=testng.xml"
             }
             post {
                 always {
