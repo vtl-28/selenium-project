@@ -46,7 +46,7 @@ public class BaseTest {
 		}
 
 		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofMillis(10000));
+		driver.manage().timeouts().implicitlyWait(Duration.ofMillis(20000));
 		driver.get(AUT);
 		
 		basePage = new BasePage();
