@@ -32,32 +32,15 @@ public class BaseTest {
 	public void setUp(@Optional("chrome") String nameOfBrowser, @Optional("https://www.amazon.in") String AUT) {
 		logger.info("Starting test from the base file");
 		
-		ChromeOptions options = new ChromeOptions();
-		options.addArguments("--headless");
-        options.addArguments("--no-sandbox");
-        options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--disable-gpu");
-        options.addArguments("--disable-extensions");
-        options.addArguments("--disable-plugins");
-        options.addArguments("--window-size=1920,1080");
-        options.addArguments("--remote-debugging-port=9222");
-        options.addArguments("--disable-web-security");
-        options.addArguments("--allow-running-insecure-content");
-        options.addArguments("--ignore-certificate-errors");
-        options.addArguments("--ignore-ssl-errors");
-        options.addArguments("--disable-logging");
-        options.addArguments("--silent");
-        
-        options.setPageLoadStrategy(PageLoadStrategy.EAGER);
 		
 		if (nameOfBrowser.equalsIgnoreCase("chrome")) {
 			WebDriverManager.chromedriver().setup();
-			driver = new ChromeDriver(options);
+			driver = new ChromeDriver();
 		}
 
 
 		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofMillis(20000));
+		driver.manage().timeouts().implicitlyWait(Duration.ofMillis(10000));
 		driver.get(AUT);
 		
 		basePage = new BasePage();
